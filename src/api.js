@@ -1,1 +1,1 @@
-export const BASE_URL = "https://shaidur.pythonanywhere.com/api/json-data/";
+export const BASE_URL = "https://shaidur.pythonanywhere.com/api/trades/";
