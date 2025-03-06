@@ -1,12 +1,63 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Stock-Market-Trade FrontEnd
 
-Currently, two official plugins are available:
+This is a Front-End page for a trade platform built with React. The project allows users to create, read, update, and delete trade data, also see data visualization.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- CRUD operations for trade data
+- Also you can see json data from stock_market_data.json
+- User can see data visualization with LineChart and BarChart
+- Also user can filter data by trade_code
+
+## What I Learned
+
+1. React fundamentals, including functional components and hooks.
+2. How to visualize data using Recharts.
+3. Implementing CRUD operations in a React-frontend with SQL backend.
+4. State management and API handling.
+
+## Challenges Faced
+
+1. Understanding React’s `useState` and `useEffect` properly.
+2. Making the table editable while syncing changes with the backend.
+3. Integrating multi-axis charts dynamically.
+4. Switching from JSON to SQL while keeping both models separate.
+
+## Installation
+
+Follow these steps to set up and run the project locally:
+
+
+    1. Clone the Repository
+
+    First, clone the repository from GitHub:
+
+    git clone https://github.com/SRR23/Stock-Market-Trade-FrontEnd.git
+
+    2. Install Dependencies
+    Install the required packages:
+
+    npm install
+
+    3. Run the Development Server
+    Start the React development server:
+
+    npm run dev
+
+    The Project will be available at:
+    📌 http://localhost:5173/
+    
+## To switch JSON model
+
+    In the src/api.js file, update the BASE_URL to switch to the JSON model by replacing it with the following URL:
+     https://shaidur.pythonanywhere.com/api/json-data/
+
+    note: Remember it's a static data, you don't make CRUD operations.
+
+## Technologies Used
+
+    React
+    Bootstrap
+    Recharts
