@@ -13,6 +13,7 @@ const TradeDashboard = () => {
     const [trades, setTrades] = useState([]);
     const [tradeCodes, setTradeCodes] = useState([]);
     const [selectedTradeCode, setSelectedTradeCode] = useState("");
+    const [refresh, setRefresh] = useState(false); // Added refresh state
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [totalPages, setTotalPages] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
@@ -20,7 +21,7 @@ const TradeDashboard = () => {
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
 
-    // Fetch unique trade codes (runs once on mount)
+    // Fetch trade codes (runs on mount & when refresh changes)
     useEffect(() => {
         axios.get(`${BASE_URL}trade-code/`)
             .then(({ data }) => {
@@ -32,9 +33,9 @@ const TradeDashboard = () => {
                 }
             })
             .catch((error) => console.error("Error fetching trade codes:", error));
-    }, []);
+    }, [refresh]); // Runs when refresh changes
 
-    // Fetch paginated trade data (optimized with useCallback)
+    // Fetch paginated trade data
     const fetchTradeData = useCallback((tradeCode, page, pageSize) => {
         setLoading(true);
         const params = new URLSearchParams({ page, page_size: pageSize });
@@ -49,42 +50,38 @@ const TradeDashboard = () => {
             .finally(() => setLoading(false));
     }, []);
 
-    // Re-fetch trade data when dependencies change
     useEffect(() => {
         fetchTradeData(selectedTradeCode, currentPage, pageSize);
     }, [selectedTradeCode, currentPage, pageSize, fetchTradeData]);
 
-    // Handle page change
     const handlePageChange = (page, pageSize) => {
         setCurrentPage(page);
         setPageSize(pageSize);
     };
 
-    // Handle trade code selection
     const handleTradeCodeChange = (value) => {
         setSelectedTradeCode(value);
         setCurrentPage(1);
     };
 
-    // Handle trade addition
+    // Handle adding new trade
     const handleAddTrade = (values) => {
         axios.post(BASE_URL, values)
             .then(() => {
                 setIsModalVisible(false);
                 form.resetFields();
+                setRefresh(prev => !prev); // Toggle refresh state to fetch new trade codes
                 fetchTradeData(selectedTradeCode, currentPage, pageSize); // Refresh trades
             })
             .catch((error) => console.error("Error adding trade:", error));
     };
 
-    // Handle trade deletion
     const handleDelete = (id) => {
         axios.delete(`${BASE_URL}${id}/`)
             .then(() => fetchTradeData(selectedTradeCode, currentPage, pageSize))
             .catch(error => console.error("Error deleting trade:", error));
     };
 
-    // Handle trade editing
     const handleEditTrade = (id, updatedValues, isPartialUpdate = true) => {
         const httpMethod = isPartialUpdate ? axios.patch : axios.put;
         httpMethod(`${BASE_URL}${id}/`, updatedValues)
