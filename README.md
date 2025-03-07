@@ -15,8 +15,9 @@ This is a Front-End page for a trade platform built with React. The project allo
 
 1. React fundamentals, including functional components and hooks.
 2. How to visualize data using Recharts.
-3. Implementing CRUD operations in a React-frontend with SQL backend.
-4. State management and API handling.
+3. How to use Ant Design.
+4. Implementing CRUD operations in a React-frontend with SQL backend.
+5. State management and API handling.
 
 ## Challenges Faced
 
@@ -48,6 +49,11 @@ Follow these steps to set up and run the project locally:
 
     The Project will be available at:
     📌 http://localhost:5173/
+
+## To switch Sql model
+
+    In the src/api.js file, update the BASE_URL to switch to the SQL model by replacing it with the following URL:
+     https://shaidur.pythonanywhere.com/api/trades/
     
 ## To switch JSON model
 
@@ -61,3 +67,4 @@ Follow these steps to set up and run the project locally:
     React
     Bootstrap
     Recharts
+    Ant Design
