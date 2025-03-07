@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { Button, Select, Form, Pagination } from "antd";
+import { Button, Select, Form, Pagination, Spin } from "antd";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BASE_URL } from "../api";
 import TradeForm from "./../componenets/TradeForm";
@@ -114,8 +114,10 @@ const TradeDashboard = () => {
                 ))}
             </Select>
 
-            <TradeChart data={trades} />
-            <TradeTable trades={trades} onDelete={handleDelete} onEdit={handleEditTrade} />
+            <Spin spinning={loading} tip="Loading trades...">
+                <TradeChart data={trades} />
+                <TradeTable trades={trades} onDelete={handleDelete} onEdit={handleEditTrade} />
+            </Spin>
 
             <Pagination
                 current={currentPage}
