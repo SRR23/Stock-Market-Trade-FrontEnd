@@ -15,9 +15,10 @@ This is a Front-End page for a trade platform built with React. The project allo
 
 1. React fundamentals, including functional components and hooks.
 2. How to visualize data using Recharts.
-3. How to use Ant Design.
-4. Implementing CRUD operations in a React-frontend with SQL backend.
-5. State management and API handling.
+3. Implement Ant Design.
+4. Uses of React Query.
+5. Implementing CRUD operations in a React-frontend with SQL backend.
+6. State management and API handling.
 
 ## Challenges Faced
 
@@ -25,6 +26,8 @@ This is a Front-End page for a trade platform built with React. The project allo
 2. Making the table editable while syncing changes with the backend.
 3. Integrating multi-axis charts dynamically.
 4. Switching from JSON to SQL while keeping both models separate.
+5. Integrating React Query for efficient data fetching, 
+   state management, and handling optimistic UI updates.
 
 ## Installation
 
