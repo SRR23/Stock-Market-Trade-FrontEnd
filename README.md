@@ -6,10 +6,10 @@ This is a Front-End page for a trade platform built with React. The project allo
 
 ## Features
 
-- CRUD operations for trade data
-- Also you can see json data from stock_market_data.json
-- User can see data visualization with LineChart and BarChart
-- Also user can filter data by trade_code
+- CRUD operations for trade data.
+- Also you can see json data from stock_market_data.json.
+- User can see data visualization with LineChart and BarChart.
+- Also user can filter data by trade_code.
 
 ## What I Learned
 
